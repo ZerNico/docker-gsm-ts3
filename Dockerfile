@@ -4,7 +4,7 @@ FROM lsiobase/xenial
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="sparklyballs"
+LABEL maintainer="ZerNico"
 
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
@@ -37,5 +37,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 9987/udp 30033 10011 41144
+EXPOSE 27015/udp
 VOLUME /config

@@ -4,21 +4,16 @@
 mkdir -p /config/serverfiles
 
 # fetch installer
-if [ ! -e /config/ts3server ]; then
-wget -O /config/ts3server http://gameservermanagers.com/dl/ts3server
-chmod +x /config/ts3server
-fi
-
-# copy default config
-if [ ! -e /config/serverfiles/ts3-server.ini ]; then
-cp /defaults/ts3-server.ini /config/serverfiles/ts3-server.ini
-chmod 440 /config/serverfiles/ts3-server.ini
+if [ ! -e /config/gmodserver ]; then
+wget -O /config/linuxgsm.sh http://gameservermanagers.com/dl/linuxgsm.sh
+chmod +x /config/linuxgsm.sh
+bash linuxgsm.sh gmodserver
 fi
 
 # permissions
 chown abc:abc -R /config
 
-if [ ! -f /config/serverfiles/ts3server_minimal_runscript.sh ]; then
+if [ ! -f /config/gmodserver ]; then
 cd /config || exit
-s6-setuidgid abc /config/ts3server auto-install
+s6-setuidgid abc /config/gmodserver install
 fi
